@@ -1,0 +1,26 @@
+{
+  "name": "Java SDK",
+  "versions": {
+    "8": {
+      "urls": [
+        "https://mirror1.example.com/jdk-8u401-windows-x64.zip",
+        "https://mirror2.example.com/jdk-8u401-windows-x64.zip"
+      ]
+    },
+    "11": {
+      "urls": [
+        "https://mirror1.example.com/jdk-11.0.22_windows-x64.zip"
+      ]
+    },
+    "17": {
+      "urls": [
+        "https://mirror1.example.com/jdk-17.0.10_windows-x64.zip"
+      ]
+    },
+    "21": {
+      "urls": [
+        "https://mirror1.example.com/jdk-21.0.2_windows-x64.zip"
+      ]
+    }
+  }
+}
