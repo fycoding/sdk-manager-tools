@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:args/args.dart';
-import 'package:path/path.dart' as path;
 import 'package:sdk/version.dart';
 
 abstract class SdkPlatform {
@@ -9,6 +8,7 @@ abstract class SdkPlatform {
   String get name;
   String get id;
   String get envName;
+  String get configJson;
 
   // sdk目录
   late final String sdkPath;
@@ -108,12 +108,7 @@ abstract class SdkPlatform {
   }
 
   void _loadConfigSync() {
-    final configFile = File(path.join('lib', 'platform', '$id.json'));
-    if (!configFile.existsSync()) {
-      throw Exception('$name 配置文件不存在: ${configFile.path}');
-    }
-    final content = configFile.readAsStringSync();
-    _config = json.decode(content);
+    _config = json.decode(configJson);
   }
 
   String _getSdkPath() {
@@ -122,34 +117,6 @@ abstract class SdkPlatform {
   }
 
   // 私有方法
-
-  Future<bool> _isVersionDownloaded(String version) async {
-    print('检查版本 $version 是否已下载');
-    return false;
-  }
-
-  Future<void> _downloadVersion(String version) async {
-    final urls = getDownloadUrls(version);
-    if (urls.isEmpty) {
-      throw Exception('找不到版本 $version 的下载地址');
-    }
-
-    print('开始下载 $name $version...');
-    for (final url in urls) {
-      print('尝试从 $url 下载...');
-      // TODO: 实现下载逻辑
-      break;
-    }
-  }
-
-  Future<void> _setEnvironmentVariables(String version) async {
-    print('设置环境变量: $envName');
-  }
-
-  Future<void> _recordCurrentVersion(String version) async {
-    print('记录当前版本: $version');
-  }
-
   void _printHelp() {
     print('$name 管理工具\n');
     print(commandParser.usage);

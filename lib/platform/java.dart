@@ -9,4 +9,53 @@ class JavaSdkPlatform extends SdkPlatform {
 
   @override
   String get envName => 'JAVA_HOME';
+
+  @override
+  String get configJson => '''
+  {
+  "name": "Java SDK",
+  "versions": {
+    "8": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/8/openjdk-8u43-windows-i586.zip"
+      ]
+    },
+    "11": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/11/openjdk-11.0.2_windows-x64_bin.zip"
+      ]
+    },
+    "17": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/17/openjdk-17_windows-x64_bin.zip"
+      ]
+    },
+    "21": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/21/openjdk-21.0.2_windows-x64_bin.zip"
+      ]
+    },
+    "22": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/22/openjdk-22.0.2_windows-x64_bin.zip"
+      ]
+    },
+    "23": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/23/openjdk-23.0.2_windows-x64_bin.zip"
+      ]
+    },
+    "24": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/24/openjdk-24.0.2_windows-x64_bin.zip"
+      ]
+    },
+    "25": {
+      "urls": [
+        "https://d10.injdk.cn/openjdk/openjdk/25/openjdk-25_windows-x64_bin.zip"
+      ]
+    }
+  }
+}
+  ''';
 }
