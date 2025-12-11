@@ -31,11 +31,10 @@ class Version {
 
   /// 切换版本
   Future<bool> switchVersion(String v) async {
-    print(sdkPath);
     print(_currentVersion);
-    print(linkPath);
     // 版本相同，直接返回
     if (_currentVersion != null && _currentVersion == v) {
+      print("版本相同，无需切换");
       return true;
     }
     // 找到对应版本下载地址
@@ -44,16 +43,19 @@ class Version {
       print("版本不匹配");
       return false;
     }
-    // 下载
-    var file = await downloadFile(urls, sdkPath);
-    if (file == null) {
-      print("所有地址均下载失败");
-      return false;
-    }
+    // 当前版本所在文件夹
     String currPath = path.join(sdkPath, v);
-    // 解压
-    extractFileSimple(file.path, currPath);
-    await file.delete();
+    if (!Directory(currPath).existsSync()) {
+      // 下载
+      var file = await downloadFile(urls, sdkPath);
+      if (file == null) {
+        print("所有地址均下载失败");
+        return false;
+      }
+      // 解压
+      extractFileSimple(file.path, currPath);
+      await file.delete();
+    }
     // 创建链接
     await deleteLink(linkPath);
     await createSymbolicLink(targetPath: currPath, linkPath: linkPath);
