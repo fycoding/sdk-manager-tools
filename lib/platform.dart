@@ -40,7 +40,8 @@ abstract class SdkPlatform {
   }
 
   Future<String?> getCurrentVersion() async {
-    return config['default_version'] as String?;
+    Version v = Version(this);
+    return v.getCurrentVersion();
   }
 
   Future<void> useVersion(String version) async {

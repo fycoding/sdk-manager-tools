@@ -9,9 +9,9 @@ import 'package:args/args.dart';
 
 void main(List<String> arguments) async {
   final platforms = <String, SdkPlatform>{
-    // 'android': AndroidSdkPlatform(),
-    // 'dart': DartSdkPlatform(),
-    // 'flutter': FlutterSdkPlatform(),
+    'android': AndroidSdkPlatform(),
+    'dart': DartSdkPlatform(),
+    'flutter': FlutterSdkPlatform(),
     'java': JavaSdkPlatform(),
   };
 

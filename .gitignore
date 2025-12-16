@@ -3,4 +3,7 @@
 .dart_tool/
 .vscode
 java
+dart
+flutter
+android
 /bin/*.exe

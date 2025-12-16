@@ -26,7 +26,7 @@ class Version {
     versions = platform.config['versions'];
     sdkPath = path.join(Directory.current.path, platform.id);
     linkPath = path.join(sdkPath, _linkName);
-    _currentVersion = _getCurrentVersion();
+    _currentVersion = _setCurrentVersion();
   }
 
   /// 切换版本
@@ -80,8 +80,12 @@ class Version {
     print(table.toString());
   }
 
+  String? getCurrentVersion() {
+    return _currentVersion;
+  }
+
   // 获取当前version
-  String? _getCurrentVersion() {
+  String? _setCurrentVersion() {
     String? path = getLinkTarget(linkPath);
     if (path != null) {
       return path.split(r'\').last;
